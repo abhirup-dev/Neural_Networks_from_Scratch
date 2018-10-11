@@ -1,0 +1,5 @@
+/home/abhirup/Codes/NN Scratch/build/CMakeFiles/rebuild_cache.dir
+/home/abhirup/Codes/NN Scratch/build/CMakeFiles/try_opencl.dir
+/home/abhirup/Codes/NN Scratch/build/CMakeFiles/try_cpu.dir
+/home/abhirup/Codes/NN Scratch/build/CMakeFiles/edit_cache.dir
+/home/abhirup/Codes/NN Scratch/build/CMakeFiles/try_cuda.dir

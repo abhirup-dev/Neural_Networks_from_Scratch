@@ -1,0 +1,1 @@
+/usr/bin/g++-6   -g   CMakeFiles/try_cpu.dir/try.cpp.o  -o try_cpu -rdynamic /opt/arrayfire/lib/libafcpu.so.3.6.1 -Wl,-rpath,/opt/arrayfire/lib 
