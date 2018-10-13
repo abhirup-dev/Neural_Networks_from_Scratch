@@ -111,76 +111,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named try_opencl
+# Target rules for targets named test_af_cpu
 
 # Build rule for target.
-try_opencl: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 try_opencl
-.PHONY : try_opencl
+test_af_cpu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_af_cpu
+.PHONY : test_af_cpu
 
 # fast build rule for target.
-try_opencl/fast:
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/build
-.PHONY : try_opencl/fast
+test_af_cpu/fast:
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/build
+.PHONY : test_af_cpu/fast
 
 #=============================================================================
-# Target rules for targets named try_cpu
+# Target rules for targets named test_af_cuda
 
 # Build rule for target.
-try_cpu: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 try_cpu
-.PHONY : try_cpu
+test_af_cuda: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_af_cuda
+.PHONY : test_af_cuda
 
 # fast build rule for target.
-try_cpu/fast:
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/build
-.PHONY : try_cpu/fast
-
-#=============================================================================
-# Target rules for targets named try_cuda
-
-# Build rule for target.
-try_cuda: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 try_cuda
-.PHONY : try_cuda
-
-# fast build rule for target.
-try_cuda/fast:
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/build
-.PHONY : try_cuda/fast
-
-try.o: try.cpp.o
-
-.PHONY : try.o
+test_af_cuda/fast:
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/build
+.PHONY : test_af_cuda/fast
 
 # target to build an object file
-try.cpp.o:
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/try.cpp.o
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/try.cpp.o
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/try.cpp.o
-.PHONY : try.cpp.o
-
-try.i: try.cpp.i
-
-.PHONY : try.i
+test_af.o:
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/test_af.o
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/test_af.o
+.PHONY : test_af.o
 
 # target to preprocess a source file
-try.cpp.i:
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/try.cpp.i
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/try.cpp.i
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/try.cpp.i
-.PHONY : try.cpp.i
-
-try.s: try.cpp.s
-
-.PHONY : try.s
+test_af.i:
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/test_af.i
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/test_af.i
+.PHONY : test_af.i
 
 # target to generate assembly for a file
-try.cpp.s:
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/try.cpp.s
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/try.cpp.s
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/try.cpp.s
-.PHONY : try.cpp.s
+test_af.s:
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/test_af.s
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/test_af.s
+.PHONY : test_af.s
 
 # Help Target
 help:
@@ -189,13 +161,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... try_opencl"
-	@echo "... try_cpu"
 	@echo "... edit_cache"
-	@echo "... try_cuda"
-	@echo "... try.o"
-	@echo "... try.i"
-	@echo "... try.s"
+	@echo "... test_af_cpu"
+	@echo "... test_af_cuda"
+	@echo "... test_af.o"
+	@echo "... test_af.i"
+	@echo "... test_af.s"
 .PHONY : help
 
 

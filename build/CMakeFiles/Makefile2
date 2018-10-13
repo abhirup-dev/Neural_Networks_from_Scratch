@@ -60,113 +60,76 @@ CMAKE_SOURCE_DIR = "/home/abhirup/Codes/NN Scratch"
 CMAKE_BINARY_DIR = "/home/abhirup/Codes/NN Scratch/build"
 
 #=============================================================================
-# Target rules for target CMakeFiles/try_opencl.dir
+# Target rules for target CMakeFiles/test_af_cpu.dir
 
 # All Build rule for target.
-CMakeFiles/try_opencl.dir/all:
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/depend
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/abhirup/Codes/NN Scratch/build/CMakeFiles" --progress-num=5,6 "Built target try_opencl"
-.PHONY : CMakeFiles/try_opencl.dir/all
+CMakeFiles/test_af_cpu.dir/all:
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/depend
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/abhirup/Codes/NN Scratch/build/CMakeFiles" --progress-num=1,2 "Built target test_af_cpu"
+.PHONY : CMakeFiles/test_af_cpu.dir/all
 
 # Include target in all.
-all: CMakeFiles/try_opencl.dir/all
+all: CMakeFiles/test_af_cpu.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/try_opencl.dir/rule: cmake_check_build_system
+CMakeFiles/test_af_cpu.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/abhirup/Codes/NN Scratch/build/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/try_opencl.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_af_cpu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/abhirup/Codes/NN Scratch/build/CMakeFiles" 0
-.PHONY : CMakeFiles/try_opencl.dir/rule
+.PHONY : CMakeFiles/test_af_cpu.dir/rule
 
 # Convenience name for target.
-try_opencl: CMakeFiles/try_opencl.dir/rule
+test_af_cpu: CMakeFiles/test_af_cpu.dir/rule
 
-.PHONY : try_opencl
-
-# clean rule for target.
-CMakeFiles/try_opencl.dir/clean:
-	$(MAKE) -f CMakeFiles/try_opencl.dir/build.make CMakeFiles/try_opencl.dir/clean
-.PHONY : CMakeFiles/try_opencl.dir/clean
+.PHONY : test_af_cpu
 
 # clean rule for target.
-clean: CMakeFiles/try_opencl.dir/clean
+CMakeFiles/test_af_cpu.dir/clean:
+	$(MAKE) -f CMakeFiles/test_af_cpu.dir/build.make CMakeFiles/test_af_cpu.dir/clean
+.PHONY : CMakeFiles/test_af_cpu.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/test_af_cpu.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/try_cpu.dir
+# Target rules for target CMakeFiles/test_af_cuda.dir
 
 # All Build rule for target.
-CMakeFiles/try_cpu.dir/all:
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/depend
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/abhirup/Codes/NN Scratch/build/CMakeFiles" --progress-num=1,2 "Built target try_cpu"
-.PHONY : CMakeFiles/try_cpu.dir/all
+CMakeFiles/test_af_cuda.dir/all:
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/depend
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/abhirup/Codes/NN Scratch/build/CMakeFiles" --progress-num=3,4 "Built target test_af_cuda"
+.PHONY : CMakeFiles/test_af_cuda.dir/all
 
 # Include target in all.
-all: CMakeFiles/try_cpu.dir/all
+all: CMakeFiles/test_af_cuda.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/try_cpu.dir/rule: cmake_check_build_system
+CMakeFiles/test_af_cuda.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/abhirup/Codes/NN Scratch/build/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/try_cpu.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_af_cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/abhirup/Codes/NN Scratch/build/CMakeFiles" 0
-.PHONY : CMakeFiles/try_cpu.dir/rule
+.PHONY : CMakeFiles/test_af_cuda.dir/rule
 
 # Convenience name for target.
-try_cpu: CMakeFiles/try_cpu.dir/rule
+test_af_cuda: CMakeFiles/test_af_cuda.dir/rule
 
-.PHONY : try_cpu
-
-# clean rule for target.
-CMakeFiles/try_cpu.dir/clean:
-	$(MAKE) -f CMakeFiles/try_cpu.dir/build.make CMakeFiles/try_cpu.dir/clean
-.PHONY : CMakeFiles/try_cpu.dir/clean
+.PHONY : test_af_cuda
 
 # clean rule for target.
-clean: CMakeFiles/try_cpu.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/try_cuda.dir
-
-# All Build rule for target.
-CMakeFiles/try_cuda.dir/all:
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/depend
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/abhirup/Codes/NN Scratch/build/CMakeFiles" --progress-num=3,4 "Built target try_cuda"
-.PHONY : CMakeFiles/try_cuda.dir/all
-
-# Include target in all.
-all: CMakeFiles/try_cuda.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/try_cuda.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/abhirup/Codes/NN Scratch/build/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/try_cuda.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/abhirup/Codes/NN Scratch/build/CMakeFiles" 0
-.PHONY : CMakeFiles/try_cuda.dir/rule
-
-# Convenience name for target.
-try_cuda: CMakeFiles/try_cuda.dir/rule
-
-.PHONY : try_cuda
+CMakeFiles/test_af_cuda.dir/clean:
+	$(MAKE) -f CMakeFiles/test_af_cuda.dir/build.make CMakeFiles/test_af_cuda.dir/clean
+.PHONY : CMakeFiles/test_af_cuda.dir/clean
 
 # clean rule for target.
-CMakeFiles/try_cuda.dir/clean:
-	$(MAKE) -f CMakeFiles/try_cuda.dir/build.make CMakeFiles/try_cuda.dir/clean
-.PHONY : CMakeFiles/try_cuda.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/try_cuda.dir/clean
+clean: CMakeFiles/test_af_cuda.dir/clean
 
 .PHONY : clean
 

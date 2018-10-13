@@ -1,1 +1,0 @@
-/usr/bin/g++-6   -g   CMakeFiles/try_opencl.dir/try.cpp.o  -o try_opencl -rdynamic /opt/arrayfire/lib/libafopencl.so.3.6.1 -Wl,-rpath,/opt/arrayfire/lib 

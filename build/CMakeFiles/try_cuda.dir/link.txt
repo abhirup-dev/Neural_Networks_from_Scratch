@@ -1,1 +1,0 @@
-/usr/bin/g++-6   -g   CMakeFiles/try_cuda.dir/try.cpp.o  -o try_cuda -rdynamic /opt/arrayfire/lib/libafcuda.so.3.6.1 -Wl,-rpath,/opt/arrayfire/lib 
