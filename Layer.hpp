@@ -6,7 +6,7 @@
 #include <string>
 using std::vector;
 using std::string;
-int z=0;
+
 class Layer
 {
 public:
