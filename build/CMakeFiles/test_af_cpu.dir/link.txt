@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/test_af_cpu.dir/test_af.o  -o test_af_cpu -rdynamic /opt/arrayfire/lib/libafcpu.so.3.6.1 -Wl,-rpath,/opt/arrayfire/lib 

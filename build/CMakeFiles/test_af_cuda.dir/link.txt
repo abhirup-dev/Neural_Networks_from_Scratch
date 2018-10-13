@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/test_af_cuda.dir/test_af.o  -o test_af_cuda -rdynamic /opt/arrayfire/lib/libafcuda.so.3.6.1 -Wl,-rpath,/opt/arrayfire/lib 

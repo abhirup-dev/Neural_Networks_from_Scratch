@@ -1,4 +1,0 @@
-/home/abhirup/Codes/NN Scratch/build/CMakeFiles/rebuild_cache.dir
-/home/abhirup/Codes/NN Scratch/build/CMakeFiles/edit_cache.dir
-/home/abhirup/Codes/NN Scratch/build/CMakeFiles/test_af_cpu.dir
-/home/abhirup/Codes/NN Scratch/build/CMakeFiles/test_af_cuda.dir
