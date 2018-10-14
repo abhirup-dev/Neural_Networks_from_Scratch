@@ -17,4 +17,4 @@ macro(add_code name)
 	endif()
 endmacro()
 
-add_code(test_af)
+add_code(custom_activation)

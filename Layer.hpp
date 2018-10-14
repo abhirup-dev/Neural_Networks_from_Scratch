@@ -23,7 +23,7 @@ public:
 	static af::array sigm_activation(const af::array &x);
 	static af::array sigm_deriv_activation(const af::array &x);
 
-    static void setActivation(af::array(*activ)(const af::array&), af::array(*deriv)(const af::array&), string name);
+    static void setNewActivation(af::array(*activ)(const af::array&), af::array(*deriv)(const af::array&), string name);
 };
 std::unordered_map<string, std::pair<af::array(*)(const af::array&), af::array(*)(const af::array&)>> Layer::activ_map =
 	{
@@ -62,7 +62,7 @@ af::array Layer::sigm_deriv_activation(const af::array &x)
 {
     return (x*(1.0 - x));
 }
-void Layer::setActivation(af::array(*activ)(const af::array&), af::array(*deriv)(const af::array&), string name)
+void Layer::setNewActivation(af::array(*activ)(const af::array&), af::array(*deriv)(const af::array&), string name)
 {
-    activ_map[name] = std::make_pair(activ, deriv);
+    activ_map.insert(std::make_pair(name, std::make_pair(activ, deriv)));
 }
