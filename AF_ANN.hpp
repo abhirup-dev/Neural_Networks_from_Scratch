@@ -1,3 +1,8 @@
+// *************************************************************
+// Author: Abhirup Das
+// Github: https://github.com/codebuddha
+// LinkedIn: https://www.linkedin.com/in/abhirup-das-5a174212a/
+// *************************************************************
 #include <iostream>
 #include <arrayfire.h>
 #include <af/util.h>
@@ -53,6 +58,7 @@ Net::Net(const vector<int> &topo, const vector<string> activs, double range)
 }
 void Net::setNetwork(const vector<vector<float>> &inputVals)
 {
+	assert ((inputVals[0].size() == topology[0]) && "Invalid inputVals dimensions.");
 	int b_size = inputVals.size();
 	for(int i=0; i<num_layers; i++)
 		if(i != num_layers-1){
@@ -78,6 +84,8 @@ void Net::feedForward()
 }
 void Net::backProp(const vector<vector<float>> &targetVals, float lr_rate)
 {
+	af::array out = network.back().layer;
+	assert (targetVals.size() == out.dims(0) && targetVals[0].size() == out.dims(1) && "Invalid targetVals dimensions.");
 	alpha = lr_rate;//learning rate
 
 	int batch_size = targetVals.size();
@@ -90,7 +98,6 @@ void Net::backProp(const vector<vector<float>> &targetVals, float lr_rate)
 	//... for respective layers
 	af::array (*deriv)(const af::array&) = network.back().activ_deriv_fn;
 
-	af::array out = network.back().layer;
 	net_loss = out - target;
 	af::array err = net_loss;
 
@@ -122,47 +129,3 @@ vector<float> Net::getOutput()
 	return out;
 }
 
-int main()
-{
-	// std::cout << "started\n";
-	vector<int> topo = {3, 2, 1};
-	vector<string> activations = {"sigmoid", "sigmoid", "sigmoid", "sigmoid"};
-	Net nn = Net(topo, activations, 2);
-
-	vector<vector<float>> inputs = {
-			{0, 0, 0},
-			{0, 0, 1},
-			{0, 1, 0},
-			{0, 1, 1}
-	}, target = {
-		{0},
-		{1},
-		{1},
-		{0}
-	};
-	
-	nn.setNetwork(inputs);
-	
-	int batch_size = inputs.size();
-	for(int i=0; i<=50000; i++){
-		for(int j=0; j<inputs.size()/batch_size; j++)
-		{
-			nn.feedForward();
-//			nn.calcLoss(af_target);
-			nn.backProp(target, 2.0);
-			if(i % 1000 == 0)
-				af_print(nn.net_loss);
-		}
-		if(i % 1000 == 0)
-			std::cout << "==========" << i << "==========\n";
-	}
-
-	vector<vector<float>> in ={{0, 1, 0}, {0, 0, 0}}, out ={{1}, {0}};
-	nn.setNetwork(in);
-	nn.feedForward();
-	auto res = nn.getOutput();
-	std::cout << "Results: ";
-	for(auto &o: res)
-		std::cout << o << " ";
-	std::cout << "\n";
-}

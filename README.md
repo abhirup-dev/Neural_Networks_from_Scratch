@@ -6,3 +6,4 @@ There are two implementations listed here:
 
 2) A vectorized implementation of an ANN using the [ArrayFire](http://arrayfire.org/docs/index.htm) library that allows the use of an unified source-code to compile programs for CPU, CUDA, as well as OpenCL. Some features that allow for smooth experimentation:
     - Ability to add custom activation functions using the [`Layer::setNewActivation`](https://github.com/codebuddha/Neural_Networks_from_Scratch/blob/1255ffddde497e32aaf9e673e8ea6e3493b8a368/Layer.hpp#L65) function, as shown [here](https://github.com/codebuddha/Neural_Networks_from_Scratch/blob/1255ffddde497e32aaf9e673e8ea6e3493b8a368/custom_activation.cpp#L32). 
+    - Decaying learning rate across epochs as shown [here]().

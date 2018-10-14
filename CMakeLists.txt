@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(Neural-Network-from-scratch-in-C++
+project(Neural-Network-from-Scratch-in-C++
   VERSION 3.5.0
   LANGUAGES CXX)
 set(cmake_cxx_flags "-std=c++14 -Ofast -march=native")
@@ -17,4 +17,4 @@ macro(add_code name)
 	endif()
 endmacro()
 
-add_code(custom_activation)
+add_code(test_XOR)

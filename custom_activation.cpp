@@ -1,3 +1,8 @@
+// *************************************************************
+// Author: Abhirup Das
+// Github: https://github.com/codebuddha
+// LinkedIn: https://www.linkedin.com/in/abhirup-das-5a174212a/
+// *************************************************************
 #include <arrayfire.h>
 #include <af/util.h>
 #include <iostream>
