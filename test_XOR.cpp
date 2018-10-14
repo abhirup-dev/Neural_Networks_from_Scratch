@@ -49,17 +49,17 @@ int main()
 	// std::cout <<calc_LRdecay(0.1, 100, 0.5, 101) << "\n";
 	// std::cout <<calc_LRdecay(0.1, 100, 0.5, 201) << "\n";
 	nn.setNetwork(inputs);
-	float lr_rate = 0.12;
+	float lr_rate = 0.12, multi=0.95; int steps=10000;
 	int batch_size = inputs.size();
 	for(int i=0; i<=50000; i++)
 	{
 		nn.feedForward();
-	//  decaying lr_rate  every 10000 steps by 0.95 times
-		nn.backProp(targets, calc_LRdecay(lr_rate, 10000, 0.95, i));
+	//  decaying lr_rate every 10000 steps by 0.95 times
+		nn.backProp(targets, calc_LRdecay(lr_rate, steps, multi, i));
 		if(i % 1000 == 0)
 			af_print(nn.net_loss);
 		if(i % 1000 == 0)
-			std::cout << "==========" << i << "==========\n";
+			std::cout << "===" << i << "===" << "lr@" << calc_LRdecay(lr_rate, 10000, 0.95, i) << "===\n";
 	}
 
 	vector<vector<float>> in ={{0, 1, 0}, {0, 0, 0}}, out ={{1}, {0}};
