@@ -20,9 +20,11 @@ float calc_LRdecay(float lr, int step, float div, int epoch)
 }
 int main()
 {
-	// std::cout << "started\n";
+	//Inputs:3(tanh)
+	//Hidden:2(tanh)
+	//Output:1(tanh)
 	vector<int> topo = {3, 2, 1};
-	vector<string> activations = {"tanh", "tanh", "tanh", "tanh"};
+	vector<string> activations = {"tanh", "tanh", "tanh"};
 	Net nn = Net(topo, activations, 2);
 
 	vector<vector<float>> inputs = {
