@@ -27,6 +27,8 @@ public:
 	static af::array tanh_deriv_activation(const af::array &x);
 	static af::array sigm_activation(const af::array &x);
 	static af::array sigm_deriv_activation(const af::array &x);
+	static af::array relu_activation (const af::array &x);
+	static af::array relu_deriv_activation (const af::array &x);
 
     static void setNewActivation(af::array(*activ)(const af::array&), af::array(*deriv)(const af::array&), string name);
 };
@@ -35,7 +37,8 @@ std::unordered_map<string, std::pair<af::array(*)(const af::array&), af::array(*
 		{"tanh", std::make_pair(&tanh_activation, &tanh_deriv_activation)},
 		{"sigmoid", std::make_pair(&sigm_activation, &sigm_deriv_activation)},
 		{"linear", std::make_pair(&lin_activation, &lin_deriv_activation)},
-		{"none", std::make_pair(&lin_activation, &lin_deriv_activation)}
+		{"none", std::make_pair(&lin_activation, &lin_deriv_activation)},
+		{"relu", std::make_pair(&relu_activation, &relu_deriv_activation)}
 	};
 Layer::Layer(int b_size, int n, string activ)
 {
@@ -65,7 +68,21 @@ af::array Layer::sigm_activation(const af::array &x)
 }
 af::array Layer::sigm_deriv_activation(const af::array &x)
 {
-    return (x*(1.0 - x));
+    return x*(1.0 - x);
+}
+af::array Layer::relu_activation (const af::array &x)
+{
+    af::array y = x;
+    y(af::where(y<0)) = 0;
+    return y;
+}
+af::array Layer::relu_deriv_activation(const af::array &x)
+{
+    af::array y = x;
+    y(af::where(y<0)) = 0.000005;
+    y(af::where(y==0)) = 0.005;
+    y(af::where(y>0)) = 1.0;
+    return y;
 }
 void Layer::setNewActivation(af::array(*activ)(const af::array&), af::array(*deriv)(const af::array&), string name)
 {

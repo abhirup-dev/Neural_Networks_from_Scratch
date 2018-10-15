@@ -22,12 +22,15 @@ public:
 	vector<af::array> weights;
 	vector<int> topology;
 	vector<string> activations;
+	Net();
 	Net(const vector<int> &topo, const vector<string> activs, double range);
-	void setNetwork(const vector<vector<float>> &inputVals);
+	void setNetwork(const af::array &inputVals);
 	void feedForward();
-	void backProp(const vector<vector<float>> &targetVals, float lr_rate);
+	void backProp(float lr_rate);
 	void getLoss(const af::array &targetVals);
-	vector<float> getOutput();
+	void L1loss(const af::array &targetVals);
+	void BCEloss(const af::array &targetVals);
+	af::array getOutput();
 	void print_all_layers();
 	void weight_dims();
 	af::array net_loss;
@@ -39,8 +42,7 @@ void Net::print_all_layers()
 		af_print(i.layer);
 }
 void Net::weight_dims()
-{class Layer;
-class Net;
+{
 	std::cout << "Weights:\n";
 	for(auto &w: weights)
 		std::cout << w.dims() << "\n";
@@ -56,10 +58,11 @@ Net::Net(const vector<int> &topo, const vector<string> activs, double range)
 		weights[i] = range * af::randu(topo[i]+1, topo[i+1]) - range/2;
 	net_loss = 0;
 }
-void Net::setNetwork(const vector<vector<float>> &inputVals)
+void Net::setNetwork(const af::array &inputVals)
 {
-	assert ((inputVals[0].size() == topology[0]) && "Invalid inputVals dimensions.");
-	int b_size = inputVals.size();
+	assert ((inputVals.dims(1) == topology[0]) && "Invalid inputVals dimensions.");
+	int b_size = inputVals.dims(0);
+	
 	for(int i=0; i<num_layers; i++)
 		if(i != num_layers-1){
 			network[i] = Layer(b_size, topology[i]+1, activations[i]);
@@ -68,42 +71,46 @@ void Net::setNetwork(const vector<vector<float>> &inputVals)
 		else
 			network[i] = Layer(b_size, topology[i], activations[i]);
 	
-	for(int i=0; i<inputVals.size(); i++)
-		for(int j=0; j<inputVals[0].size(); j++)
-			network[0].layer(i,j) = inputVals[i][j];
+	network[0].layer(af::span, af::seq(inputVals.dims(1))) = inputVals;
 
 }
 void Net::feedForward()
 {
 	for(int i=0; i<num_layers-1; i++)
 	{
-		Layer &ll = network[i];
-		af::array tmp = af::matmul(ll.layer, weights[i]);
-		network[i+1].layer(af::span, af::seq(tmp.dims(1))) = ll.activ_fn(tmp);
+		Layer &ll = network[i+1];
+		af::array tmp = af::matmul(network[i].layer, weights[i]);
+		ll.layer(af::span, af::seq(tmp.dims(1))) = ll.activ_fn(tmp);
 	}
 }
-void Net::backProp(const vector<vector<float>> &targetVals, float lr_rate)
+void Net::L1loss(const af::array &targetVals)
 {
-	af::array out = network.back().layer;
-	assert (targetVals.size() == out.dims(0) && targetVals[0].size() == out.dims(1) && "Invalid targetVals dimensions.");
+	af::array &out = network.back().layer;
+	assert (targetVals.dims(0) == out.dims(0) && targetVals.dims(1) == out.dims(1) && "Invalid targetVals dimensions.");
+	net_loss = (out - targetVals);
+}
+void Net::BCEloss(const af::array &targetVals)
+{
+	af::array &out = network.back().layer;
+	assert (targetVals.dims(0) == out.dims(0) && targetVals.dims(1) == out.dims(1) && "Invalid targetVals dimensions.");
+	net_loss = (-targetVals*af::log2(out));
+}
+void Net::backProp(float lr_rate)
+{
+	
 	alpha = lr_rate;//learning rate
-
-	int batch_size = targetVals.size();
-	af::array target(targetVals.size(), targetVals[0].size());
-	for(int i=0; i<targetVals.size(); i++)
-		for(int j=0; j<targetVals[0].size(); j++)
-			target(i,j) = targetVals[i][j];
+	af::array out = network.back().layer;
+	int batch_size = out.dims(0);
 
 	//func.pointer 'deriv' points to appropriate activation fn.
 	//... for respective layers
 	af::array (*deriv)(const af::array&) = network.back().activ_deriv_fn;
 
-	net_loss = out - target;
 	af::array err = net_loss;
 
 	for(int i=num_layers-2; i>=0; i--)
 	{
-		Layer &curr = network[i];
+		Layer curr = network[i];
 
 		af::array delta = (deriv(out)*err).T();
 
@@ -122,10 +129,8 @@ void Net::backProp(const vector<vector<float>> &targetVals, float lr_rate)
 		err = err(af::span, af::seq(out.dims(1)));
 	}
 }
-vector<float> Net::getOutput()
+af::array Net::getOutput()
 {
-	vector<float> out(network.back().layer.elements());
-	network.back().layer.host(out.data());
-	return out;
+	return network.back().layer;
 }
 
