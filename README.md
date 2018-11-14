@@ -9,3 +9,5 @@ There are two implementations listed here:
     - Decaying learning rate across epochs as shown [here](https://github.com/codebuddha/Neural_Networks_from_Scratch/blob/56bc2fee8341ac7790ad70fb0a14c92d987f17fd/test_XOR.cpp#L60), by defining a custom [`calc_LRdecay`](https://github.com/codebuddha/Neural_Networks_from_Scratch/blob/56bc2fee8341ac7790ad70fb0a14c92d987f17fd/test_XOR.cpp#L16) function.
 
 Implementation of [XOR](https://github.com/codebuddha/Neural_Networks_from_Scratch/blob/master/test_XOR.cpp) with [loss-values](https://github.com/codebuddha/Neural_Networks_from_Scratch/blob/master/test_XOR_training.txt).
+
+Using the ANN to classify NLTK Movie-Reviews as postive or negative, by using TFIDF transform for feature description. [repo](https://github.com/codebuddha/Movie-Review-Sentiment-Analysis) 
